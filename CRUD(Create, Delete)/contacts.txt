@@ -4,12 +4,13 @@ USE `supplementDB`;
 
 /* Creating table "contacts" for supplementDB */ 
 CREATE TABLE `contacts` (
-    `ID` int(10) AUTO_INCREMENT PRIMARY_KEY NOT NULL,
     `title` varchar(128) NOT NULL,
     `description` varchar(512) NOT NULL,
     `email` varchar(128) NOT NULL,
-    `phone` varchar(11) NOT NULL
-)
+    `phone` varchar(11) NOT NULL,
+    `ID` int(10) AUTO_INCREMENT NOT NULL,
+    PRIMARY KEY (ID)
+);
 
 
 /* Data insertion for "contacts" table */
@@ -17,4 +18,4 @@ INSERT INTO contacts(title, description, email, phone)
 VALUES ("DUMP", "DUMP_DESCRIPTION", "DUMP@DUMP.COM", "00000000000");
 
 /* Data hard delete for "contacts" table */
-DELETE FROM users WHERE ID = 1;
+DELETE FROM contacts WHERE ID = 1;
