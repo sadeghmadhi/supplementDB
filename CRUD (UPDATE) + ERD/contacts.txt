@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS `supplementDB`;
+USE `supplementDB`;
+
+
+/* Creating table "contacts" for supplementDB */ 
+CREATE TABLE `contacts` (
+    `isActive` enum('Active', 'inActive') NOT NULL;
+    `title` varchar(128) NOT NULL,
+    `description` varchar(512) NOT NULL,
+    `email` varchar(128) NOT NULL,
+    `phone` varchar(11) NOT NULL,
+    `ID` int(10) AUTO_INCREMENT NOT NULL,
+    PRIMARY KEY (ID)
+);
+
+
+/* Data insertion for "contacts" table */
+INSERT INTO contacts(title, description, email, phone)
+VALUES ("DUMP", "DUMP_DESCRIPTION", "DUMP@DUMP.COM", "00000000000");
+
+/* Data soft delete for "contacts" table */
+UPDATE contacts SET isActive="inActive" WHERE ID="1";
