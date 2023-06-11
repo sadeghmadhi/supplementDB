@@ -1,0 +1,58 @@
+CREATE DATABASE IF NOT EXIST `supplementDB`;
+USE supplementDB;
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `parent_ID` int DEFAULT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `commentText` int NOT NULL,
+  `user_ID` int NOT NULL,
+  `product_id` int NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `user_ID` (`user_ID`),
+  KEY `product_id` (`product_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+COMMIT;
+
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `title` varchar(128) NOT NULL,
+  `description` varchar(512) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+COMMIT;
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `product_id` int NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(128) NOT NULL,
+  `product_brand` varchar(128) NOT NULL,
+  `product_comments` int NOT NULL,
+  `product_image` varchar(256) NOT NULL,
+  `product_desc` varchar(256) NOT NULL,
+  `product_variation` enum('creatine','protein','gainer','vitamin','glutamine','amino') NOT NULL,
+  `isAvailable` enum('true','false') NOT NULL,
+  `productAddDate` date NOT NULL,
+  PRIMARY KEY (`product_id`),
+  UNIQUE KEY `product_name` (`product_name`),
+  KEY `productAddDate` (`productAddDate`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `first_name` varchar(64) NOT NULL,
+  `last_name` varchar(64) NOT NULL,
+  `birth` varchar(8) NOT NULL,
+  `country_code` varchar(5) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `gender` enum('male','female') NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `phone` (`phone`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+COMMIT;

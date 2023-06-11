@@ -1,0 +1,1 @@
+SELECT * FROM `products` WHERE isAvailable = true ORDER BY productAddDate DESC LIMIT 5;
