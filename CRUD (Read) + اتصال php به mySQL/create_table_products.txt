@@ -1,0 +1,9 @@
+CREATE TABLE `supplementdb`.`products` (
+`product_id` INT NOT NULL AUTO_INCREMENT , `product_name` VARCHAR(128) NOT NULL ,
+`product_brand` VARCHAR(128) NOT NULL , 
+`product_comments` VARCHAR(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL , 
+`product_image` VARCHAR(256) NOT NULL , 
+`product_desc` VARCHAR(256) NOT NULL , 
+`product_variation` ENUM("creatine", "protein", "gainer", "vitamin", "glutamine", "amino") NOT NULL , 
+PRIMARY KEY (`product_id`), 
+UNIQUE (`product_name`));
